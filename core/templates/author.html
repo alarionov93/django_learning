@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <p class="full_name">{{ author.full_name }}</p>
+    Books:
+    <ul>
+        {% for book in books %}
+            <li class="books">{{ book.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
