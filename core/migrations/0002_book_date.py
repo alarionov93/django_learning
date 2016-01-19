@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_auto_20151009_2222'),
+        ('core', '0001_initial'),
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='author',
-            name='second_name',
-            field=models.CharField(max_length=50, null=True),
+        migrations.AddField(
+            model_name='book',
+            name='date',
+            field=models.DateField(default=b'2016-01-19'),
         ),
     ]

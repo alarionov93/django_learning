@@ -1,6 +1,6 @@
 # -*- coding=utf-8 -*-
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 
 
@@ -8,6 +8,8 @@ class Book(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=20)
     author = models.ForeignKey("Author", to_field="id", db_column="author_id")
+    date = models.DateField(null=False, default=timezone.now().strftime("%Y-%m-%d"))
+
 
     def __unicode__(self):
         return "%s, %s" % (self.title, self.author.full_name)
@@ -34,5 +36,5 @@ class Author(models.Model):
 
     class Meta:
         db_table = "Authors"
-        verbose_name = "Афтар"
-        verbose_name_plural = "Афтары"
+        verbose_name = "Автор"
+        verbose_name_plural = "Авторы"

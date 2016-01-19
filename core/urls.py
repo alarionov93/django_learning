@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -7,6 +8,10 @@ urlpatterns = [
     url(r'^books/$', views.books, name='books'),
 
     url(r'^books/(?P<book_id>[0-9]+)/$', views.book, name='book'),
+
+    url(r'^books_year/(?P<year>[0-9]+)/$', views.books_year, name='books_year'),
+
+    # url(r'^books_year/(?P<year>[0-9]+)/(?P<book_id>[0-9]+)/$', views.book, name='book_year'),
 
     url(r'^authors/$', views.authors, name='authors'),
 

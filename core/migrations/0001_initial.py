@@ -14,14 +14,14 @@ class Migration(migrations.Migration):
             name='Author',
             fields=[
                 ('id', models.AutoField(serialize=False, primary_key=True)),
-                ('first_name', models.CharField(max_length=20)),
-                ('second_name', models.CharField(max_length=20)),
-                ('last_name', models.CharField(max_length=20)),
+                ('second_name', models.CharField(max_length=50, null=True)),
+                ('first_name', models.CharField(max_length=50, null=True, blank=True)),
+                ('last_name', models.CharField(max_length=50, null=True, blank=True)),
             ],
             options={
                 'db_table': 'Authors',
-                'verbose_name': '\u0410\u0444\u0442\u0430\u0440',
-                'verbose_name_plural': '\u0410\u0444\u0442\u0430\u0440\u044b',
+                'verbose_name': '\u0410\u0432\u0442\u043e\u0440',
+                'verbose_name_plural': '\u0410\u0432\u0442\u043e\u0440\u044b',
             },
         ),
         migrations.CreateModel(

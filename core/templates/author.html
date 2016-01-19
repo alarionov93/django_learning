@@ -5,7 +5,9 @@
     Books:
     <ul>
         {% for book in books %}
-            <li class="books">{{ book.title }}</li>
+            <li class="book">
+                <a href="/core/books/{{ book.id }}">{{ book.title }}</a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

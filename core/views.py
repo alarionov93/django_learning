@@ -1,27 +1,31 @@
-from django.shortcuts import render
+import json
+from django.shortcuts import render, redirect
+from django.core import serializers
 from django.http import Http404
 from django.http import HttpResponse
+
 from core.models import Book, Author
 
 # Create your views here.
+from django.utils import timezone
+import datetime
 
 
 def index(request):
-    return HttpResponse("Hello world!")
-
+    # return HttpResponse("Hello world!")
+    return redirect("/core/authors")
 
 def books(request):
     books = Book.objects.all()
     return render(request, 'books.html', {'books': books})
 
 
-def book(request, book_id):
+def book(request, book_id, year=timezone.now().year):
     try:
         book = Book.objects.get(pk=book_id)
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'book.html', {'book': book})
-
 
 def authors(request):
     author_list = Author.objects.all()
@@ -46,9 +50,17 @@ def author(request, author_id):
         'books': books,
         'author': current_author
     }
-    print(ctx)
+    # print(ctx)
 
     return render(request, "author.html", ctx)
+
+def books_year(request, year):
+    year = int(year)
+    date = datetime.date(year, 11, 1)
+
+    books = Book.objects.filter(date__range=(date, date.today()))
+
+    return HttpResponse(serializers.serialize('json', books))
 
 
 # def detail(request, question_id):

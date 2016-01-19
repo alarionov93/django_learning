@@ -1,25 +1,19 @@
 {% extends "index.html" %}
 
-
 {% block content %}
 
 <form data-bind="submit: getBooks">
     Date from: <input type="date" data-bind="value: date"/>
     <input type="submit" value="Show" />
 </form>
-<!-- ko ifnot: books().length == 0 -->
+
+<!-- ko if books.length>0 -->
 <ul data-bind="foreach: books">
-    <li><a data-bind="text: title, attr: { href: id }"></a></li>
+    <li><a data-bind="attr { href: id, text: title }">Show this book</a></li>
 </ul>
 <!-- /ko -->
-<!-- ko if: books().length == 0 -->
-All books:
-<ul>
-    {% for book in books %}
-        <li><a href="{{ book.id }}">{{ book.title }}</a></li>
-    {% endfor %}
-</ul>
-
+<!-- ko if books.length=0 -->
+<p>Nothing to show</p>
 <!-- /ko -->
 
 {% endblock %}
