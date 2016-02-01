@@ -10,6 +10,7 @@
 <!-- ko ifnot: books().length == 0 -->
 <ul data-bind="foreach: books">
     <li><a data-bind="text: title, attr: { href: id }"></a></li>
+    <button data-bind="click: change"></button>
 </ul>
 <!-- /ko -->
 <!-- ko if: books().length == 0 -->

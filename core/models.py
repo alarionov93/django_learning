@@ -10,7 +10,6 @@ class Book(models.Model):
     author = models.ForeignKey("Author", to_field="id", db_column="author_id")
     date = models.DateField(null=False, default=timezone.now().strftime("%Y-%m-%d"))
 
-
     def __unicode__(self):
         return "%s, %s" % (self.title, self.author.full_name)
 

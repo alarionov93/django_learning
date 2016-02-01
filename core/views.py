@@ -15,6 +15,7 @@ def index(request):
     # return HttpResponse("Hello world!")
     return redirect("/core/authors")
 
+
 def books(request):
     books = Book.objects.all()
     return render(request, 'books.html', {'books': books})
@@ -26,6 +27,7 @@ def book(request, book_id, year=timezone.now().year):
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'book.html', {'book': book})
+
 
 def authors(request):
     author_list = Author.objects.all()
@@ -53,6 +55,7 @@ def author(request, author_id):
     # print(ctx)
 
     return render(request, "author.html", ctx)
+
 
 def books_year(request, year):
     year = int(year)
