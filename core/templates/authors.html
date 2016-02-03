@@ -1,9 +1,0 @@
-{% extends "index.html" %}
-
-{% block content %}
-<ul>
-    {% for author in authors %}
-        <li><a href="{{author.id}}">{{author.full_name}}</a> ({{author.count}} книг(а))</li>
-    {% endfor %}
-</ul>
-{% endblock %}

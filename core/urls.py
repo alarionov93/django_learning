@@ -3,19 +3,36 @@ from . import views
 from django.http import HttpResponseRedirect
 
 urlpatterns = [
+    # working urls
+
+    ###################
+    # categories routes
+
+    # /core/
     url(r'^$', views.index, name='index'),
 
-    url(r'^books/$', views.books, name='books'),
+    # /core/categories/
+    url(r'^categories/$', views.index, name='index_cat'), # double route
 
-    url(r'^books/(?P<book_id>[0-9]+)/$', views.book, name='book'),
+    # /core/category/3/products/
+    url(r'^category/(?P<category_id>[0-9]+)/products/$', views.category_products, name='category_products'),
 
-    url(r'^books_year/(?P<year>[0-9]+)/$', views.books_year, name='books_year'),
+    #################
+    # products routes
 
-    # url(r'^books_year/(?P<year>[0-9]+)/(?P<book_id>[0-9]+)/$', views.book, name='book_year'),
+    # TODO: is /core/products/ needed in app?
+    # /core/product/1/
+    url(r'^product/(?P<product_id>[0-9]+)/$', views.product, name='product'),
 
-    url(r'^authors/$', views.authors, name='authors'),
+    ################
+    # farmers routes
 
-    url(r'^authors/(?P<author_id>[0-9]+)/$', views.author, name='author'),
+    # /core/farmers/
+    url(r'^farmers/$', views.farmers, name='farmers'),
+
+    # /core/farmer/2/
+    url(r'^farmer/(?P<farmer_id>[0-9]+)/$', views.farmer, name='farmer'),
+
 
     #
     # url(r'^(?P<book_id>[0-9]+)/$', views.detail, name='detail'),

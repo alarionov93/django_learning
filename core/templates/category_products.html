@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+Продукты в категории:
+<ul>
+    {% for product in products %}
+        <li><a href="{% url 'product' product.id %}">{{ product.product_name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

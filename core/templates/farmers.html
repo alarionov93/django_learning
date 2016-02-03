@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+<ul>
+    {% for farmer in farmers %}
+        <li><a href="{% url 'farmer' farmer.id %}">{{ farmer.full_name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+
+<div id="categories-list">
+    <p>Категории:</p>
+    <ul>
+    {% for category in categories %}
+        <li><a href="{% url 'category_products' category.id %}">{{ category.category_name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<a href="{% url 'farmers' %}">Все фермеры</a>
+
+{% endblock %}
