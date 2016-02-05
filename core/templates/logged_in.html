@@ -1,0 +1,7 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h2>Hi, {{ full_name }}!</h2>
+    <a href="{% url 'profile' %}">Profile</a>
+    <a href="{% url 'logout' %}">Log out</a>
+{% endblock %}

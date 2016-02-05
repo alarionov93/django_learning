@@ -1,14 +1,14 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
 {% block content %}
     <p>User profile</p>
-
+    Profile of {{ user_p.username }}
     {% for field in form %}
         {{ field.error }}
     {% endfor %}
-<form action="/accounts/profile/" method="POST">{% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Update">
-</form>
+    <form action="{% url 'profile' %}" method="POST">{% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Update">
+    </form>
 
 {% endblock %}

@@ -1,12 +1,11 @@
 import json
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.core import serializers
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.http import HttpResponse
-
+from django.template.context_processors import csrf
+from django.contrib import auth
 from core.models import Category, Product, Farmer
-
-# Create your views here.
 from django.utils import timezone
 import datetime
 
@@ -53,6 +52,41 @@ def farmer(request, farmer_id):
     return render(request, 'farmer.html', ctx)
 
 
+# account views here:
+
+def login(request):
+    ctx = {}
+    ctx.update(csrf(request))
+    return render_to_response('login.html', ctx)
+
+
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None:
+        auth.login(request, user)
+        return HttpResponseRedirect('/core/')
+    else:
+        return HttpResponseRedirect('/core/accounts/invalid/')
+
+
+def logged_in(request):
+    ctx = {
+        'full_name': request.user.username,
+        # 'user': request.user,
+    }
+    return render_to_response('logged_in.html', ctx)
+
+
+def invalid_login(request):
+    return render_to_response('invalid_login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/core/')
 # def books_year(request, year):
     # year = int(year)
     # date = datetime.date(year, 11, 1)

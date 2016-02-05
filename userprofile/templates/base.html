@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Django learning</title>
+    <title>Profile</title>
 </head>
 <body>
-{% if request.user.is_authenticated %}
+<!--{{ user_p.username }}-->
+{% if user_p.is_authenticated %}
     Logged in! <a href="{% url 'logout' %}">Log out</a>
-    <a href="{% url 'profile' %}">Profile</a>
 {% else %}
-    <h2>Хуй! Вы не вошли!</h2>
+    <h1>Хуй!!</h1>
     <a href="{% url 'login' %}">Log in</a>
 {% endif %}
+<a href="{% url 'index' %}">Main</a>
 {% block content %}  {% endblock %}
 </body>
 {% load staticfiles %}

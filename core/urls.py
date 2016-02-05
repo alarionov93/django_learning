@@ -1,8 +1,9 @@
-from django.conf.urls import url
+# from core import admin
+from django.conf.urls import url, include, patterns
 from . import views
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
 
-urlpatterns = [
+urlpatterns = patterns('',
     # working urls
 
     ###################
@@ -33,11 +34,14 @@ urlpatterns = [
     # /core/farmer/2/
     url(r'^farmer/(?P<farmer_id>[0-9]+)/$', views.farmer, name='farmer'),
 
+    ################
+    # account routes
+    url(r'^accounts/login/$', views.login, name='login'),
+    url(r'^accounts/auth/$', views.auth_view, name='auth'),
+    url(r'^accounts/logout/$', views.logout, name='logout'),
+    url(r'^accounts/logged_in/$', views.logged_in, name='logged_in'),
+    url(r'^accounts/invalid/$', views.invalid_login, name='invalid_login'),
+    # url(r'^accounts/register/$', views.register, name='register'),
+    # url(r'^accounts/register_successful/$', views.reg_success, name='register_successful'),
 
-    #
-    # url(r'^(?P<book_id>[0-9]+)/$', views.detail, name='detail'),
-    # ex: /polls/5/results/
-    # url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
-    # # ex: /polls/5/vote/
-    # url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-]
+)
