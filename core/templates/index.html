@@ -11,6 +11,8 @@
 {% else %}
     <h2>Хуй! Вы не вошли!</h2>
     <a href="{% url 'login' %}">Log in</a>
+    OR
+    <a href="{% url 'register' %}">Register</a>
 {% endif %}
 {% block content %}  {% endblock %}
 </body>

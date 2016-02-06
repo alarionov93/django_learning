@@ -22,6 +22,8 @@ def user_profile(request):
 
     args['form'] = form
     args['user_p'] = request.user
+    full_name = '%s %s' % (request.user.first_name, request.user.last_name, )
+    args['full_name'] = full_name
 
     return render_to_response('profile.html', args)
 

@@ -41,7 +41,7 @@ urlpatterns = patterns('',
     url(r'^accounts/logout/$', views.logout, name='logout'),
     url(r'^accounts/logged_in/$', views.logged_in, name='logged_in'),
     url(r'^accounts/invalid/$', views.invalid_login, name='invalid_login'),
-    # url(r'^accounts/register/$', views.register, name='register'),
-    # url(r'^accounts/register_successful/$', views.reg_success, name='register_successful'),
+    url(r'^accounts/register/$', views.register_user, name='register'),
+    url(r'^accounts/register_success/$', views.register_success, name='register_success'),
 
 )

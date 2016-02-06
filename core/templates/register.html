@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block content %}
+    {% if form.errors %}
+        <p class="error">Username or password are incorrect!</p>
+    {% endif %}
+    <form action="{% url 'register' %}" method="POST">{% csrf_token %}
+        {{ form }}
+        # TODO: define a field in model!
+        Accept terms and conditions <input type="checkbox" value="0">
+        <input type="submit" value="Register">
+    </form>
+
+{% endblock %}
